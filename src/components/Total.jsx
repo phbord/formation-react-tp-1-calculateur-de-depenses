@@ -15,7 +15,7 @@ const Total = () => {
     () => {
       setTotal(income + credit);
     },
-    [newCounter]
+    [newCounter, income, credit]
   );
 
   return (

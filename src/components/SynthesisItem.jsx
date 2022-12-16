@@ -5,7 +5,7 @@ import { incomeState } from "../atoms/incomeState";
 import { counterState } from "../atoms/counterState";
 
 const SynthesisItem = (props) => {
-  const { className, title, get, set, isIncome } = props;
+  const { className, title, isIncome } = props;
   const [income, setIncome] = useRecoilState(incomeState);
   const [credit, setcredit] = useRecoilState(creditState);
   const [newCounter, setNewCounter] = useRecoilState(counterState);
@@ -14,8 +14,9 @@ const SynthesisItem = (props) => {
   useEffect(
     () => {
       isIncome ? getIncome() : getCredit();
+      console.log( 'useEffect --=> ', isIncome );
     },
-    [newCounter]
+    [newCounter, income, credit]
   );
 
   const getIncome = () => {
